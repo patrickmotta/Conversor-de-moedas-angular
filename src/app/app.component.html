@@ -1,0 +1,50 @@
+<div class="container pt-5">
+  <div class="row ">
+    <div class="col-6 align-middle">
+      <div class="border border-primary border-2 rounded p-5">
+          <h3>Digite o valor Para converter</h3>
+          <hr/>
+        <div class="formulario">
+          <form [formGroup]="formulario" (ngSubmit)="Converter()">
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control form-control-sm" placeholder="Valor"
+                formControlName="valor"
+              />
+              <br>
+              <select name="moedaDe" class="form-control" formControlName="moedaDe" required >
+                <option *ngFor="let moeda of moedas" [value]="moeda.sigla">
+                  {{moeda.sigla}} - {{moeda.descricao}}
+                </option>
+              </select>
+              <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+              <br>
+              <select name="moedaPara" class="form-control" formControlName="moedaPara" required>
+                <option *ngFor="let moeda of moedas" [value]="moeda.sigla">
+                  {{moeda.sigla}} - {{moeda.descricao}}
+                </option>
+              </select>
+            </div>
+
+            <div class="center">
+              <button type="submit" class="btn btn-primary ">
+                Converter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-5" *ngIf="visibilidadeValorConvertido">
+
+        <div class="border border-secondary border-2 rounded p-5">
+            <h6>Valor convertido</h6>
+            <hr/>
+
+            <h1 class="text-primary">{{ valorConvertido }}</h1>
+      </div>
+
+    </div>
+  </div>
+</div>
